@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <tool-Bar></tool-Bar>
+    <tool-bar></tool-bar>
     <!-- 여기서는 케밥케이스 -->
     <router-view></router-view>
   </div>

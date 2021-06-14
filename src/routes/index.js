@@ -4,13 +4,12 @@ import VueRouter from "vue-router";
 import NewsView from "../views/NewsView.vue";
 import AskView from "../views/AskView.vue";
 import JobsView from "../views/JobsView.vue";
-import UserView from "../views/UserView.vue";
-import ItemView from "../views/ItemView.vue";
 
 Vue.use(VueRouter);
 
 // 이 뷰 인스턴스가 라우터의 내용을 담게된다.
 export const router = new VueRouter({
+  mode: "history", // mode: 'history' 이 코드가 주소창의 해시값(#)을 제거해준다.
   routes: [
     {
       path: "/",
@@ -29,14 +28,6 @@ export const router = new VueRouter({
     {
       path: "/jobs",
       component: JobsView,
-    },
-    {
-      path: "/user",
-      component: UserView,
-    },
-    {
-      path: "/item",
-      component: ItemView,
     },
   ],
 });
