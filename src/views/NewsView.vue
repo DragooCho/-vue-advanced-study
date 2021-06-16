@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div v-for="user in fetchedNews" v-bind:key="user.id">
-      {{ user.title }}
-    </div>
+    <p v-for="item in fetchedNews" v-bind:key="item.id">
+      <a v-bind:href="item.url">
+        {{ item.title }}
+      </a>
+      <small>{{ item.time_ago }} by {{ item.user }}</small>
+    </p>
   </div>
 </template>
 
@@ -15,13 +18,6 @@ export default {
   },
   created() {
     this.$store.dispatch("FETCH_NEWS_LIST");
-    // newsList()
-    //   .then((response) => {
-    //     this.users = response.data;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   },
 };
 </script>
