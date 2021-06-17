@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <tool-bar></tool-bar>
-    <!-- 여기서는 케밥케이스 -->
-    <router-view></router-view>
+    <transition name="page">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -20,5 +21,14 @@ export default {
 body {
   padding: 0;
   margin: 0;
+}
+
+/* Router Transaction */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter, .page-leave-to /* .page-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

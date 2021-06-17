@@ -26,6 +26,9 @@ export const store = new Vuex.Store({
     userInfo(state) {
       return state.user;
     },
+    fetchedItem(state) {
+      return state.item;
+    },
   },
   mutations,
   actions,
