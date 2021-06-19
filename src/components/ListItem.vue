@@ -1,0 +1,81 @@
+<template>
+  <div>
+    <ul class="news-list">
+      <li v-for="item in fetchedNews" v-bind:key="item.id" class="post">
+        <!-- 포인트영역 -->
+        <div class="points">
+          {{ item.points }}
+        </div>
+        <!-- 기타 정보 영역 -->
+        <div>
+          <p class="news-title">
+            <a :href="item.url">
+              {{ item.title }}
+            </a>
+          </p>
+          <small class="link-text">
+            by
+            <router-link v-bind:to="`/user/${item.user}`" class="link-text">{{
+              item.user
+            }}</router-link>
+          </small>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters(["fetchedNews"]),
+  },
+  created() {
+    // this.$store.dispatch("FETCH_NEWS_LIST"); // 여기서 분기처리가 필요하다.
+    console.log(this.$route.path === "/news");
+    const name = this.$route.name;
+    const dispatch = this.$store.dispatch;
+
+    if (name == "news") {
+      dispatch("FETCH_NEWS_LIST");
+    } else if (name == "ask") {
+      dispatch("FETCH_ASK_LIST");
+    } else if (name == "jobs") {
+      dispatch("FETCH_JOBS_LIST");
+    }
+  },
+};
+</script>
+
+<style scoped>
+.news-list {
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.points {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #42b883;
+}
+
+.news-title {
+  margin: 0;
+}
+
+.link-text {
+  color: #828282;
+}
+</style>
