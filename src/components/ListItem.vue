@@ -1,20 +1,20 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="item in fetchedNews" v-bind:key="item.id" class="post">
+      <li v-for="item in listItems" v-bind:key="item.id" class="post">
         <!-- 포인트영역 -->
         <div class="points">
-          {{ item.points }}
+          {{ item.points || 0 }}
         </div>
         <!-- 기타 정보 영역 -->
         <div>
           <p class="news-title">
-            <a :href="item.url">
+            <a v-bind="item.url">
               {{ item.title }}
             </a>
           </p>
           <small class="link-text">
-            by
+            {{ item.time_ago }} by
             <router-link v-bind:to="`/user/${item.user}`" class="link-text">{{
               item.user
             }}</router-link>
@@ -26,25 +26,28 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  computed: {
-    ...mapGetters(["fetchedNews"]),
-  },
   created() {
-    // this.$store.dispatch("FETCH_NEWS_LIST"); // 여기서 분기처리가 필요하다.
-    console.log(this.$route.path === "/news");
     const name = this.$route.name;
-    const dispatch = this.$store.dispatch;
-
-    if (name == "news") {
-      dispatch("FETCH_NEWS_LIST");
-    } else if (name == "ask") {
-      dispatch("FETCH_ASK_LIST");
-    } else if (name == "jobs") {
-      dispatch("FETCH_JOBS_LIST");
+    if (name === "news") {
+      this.$store.dispatch("FETCH_NEWS_LIST");
+    } else if (name === "ask") {
+      this.$store.dispatch("FETCH_ASK_LIST");
+    } else if (name === "jobs") {
+      this.$store.dispatch("FETCH_JOBS_LIST");
     }
+  },
+  computed: {
+    listItems() {
+      const name = this.$route.name;
+      if (name === "news") {
+        return this.$store.state.news;
+      } else if (name === "ask") {
+        return this.$store.state.ask;
+      } else if (name === "jobs") {
+        return this.$store.state.jobs;
+      }
+    },
   },
 };
 </script>

@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["userInfo"]),
-    // userInfo() {
-    //   return this.$store.state.user;
-    // },
+    // ...mapGetters(["userInfo"]),
+    userInfo() {
+      return this.$store.state.user;
+    },
   },
   created() {
     const userName = this.$route.params.id;

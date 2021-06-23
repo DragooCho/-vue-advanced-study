@@ -4,7 +4,7 @@ import {
   fetchJobsList,
   fetchUserInfo,
   fetchCommentItem,
-} from "@/api/index.js";
+} from "../api/index.js";
 
 export default {
   FETCH_NEWS_LIST({ commit }) {

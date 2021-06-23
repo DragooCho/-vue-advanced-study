@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import로 Vue, VueRouter를 불러오고 Vue.use(VueRouter)로 사용한다.
-import NewsView from "@/views/NewsView.vue";
-import AskView from "@/views/AskView.vue";
-import JobsView from "@/views/JobsView.vue";
-import UserView from "@/views/UserView.vue";
-import ItemView from "@/views/ItemView.vue";
+import NewsView from "../views/NewsView.vue";
+import AskView from "../views/AskView.vue";
+import JobsView from "../views/JobsView.vue";
+import UserView from "../views/UserView.vue";
+import ItemView from "../views/ItemView.vue";
 
 Vue.use(VueRouter);
 
@@ -19,10 +19,8 @@ export const router = new VueRouter({
     },
     {
       path: "/news",
-      // path: url 주소
       name: "news",
       component: NewsView,
-      // component: url 주소로 갔을 때 표시될 컴포넌트
     },
     {
       path: "/ask",
