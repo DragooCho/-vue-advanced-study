@@ -1,17 +1,20 @@
 <template>
   <div>
-    <p>name : {{ userInfo.id }}</p>
+    <user-profile :info="userInfo"></user-profile>
+    <!-- <p>name : {{ userInfo.id }}</p>
     <p>karma : {{ userInfo.karma }}</p>
-    <p>created : {{ userInfo.created }}</p>
+    <p>created : {{ userInfo.created }}</p> -->
   </div>
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
+import UserProfile from "../components/UserProfile.vue";
 
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
-    // ...mapGetters(["userInfo"]),
     userInfo() {
       return this.$store.state.user;
     },

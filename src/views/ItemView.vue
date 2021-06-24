@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <!-- 질문 -->
+      <!-- 질문 상세정보-->
       <div class="user-container">
         <div>
           <i class="fas fa-user"></i>
