@@ -7,10 +7,11 @@ import {
 } from "../api/index.js";
 
 export default {
-  FETCH_NEWS_LIST({ commit }) {
+  FETCH_NEWS_LIST(content) {
     fetchNewsList()
-      .then(({ data }) => {
-        commit("SET_NEWS", data);
+      .then((response) => {
+        content.commit("SET_NEWS", response.data);
+        return response.data;
       })
       .catch((error) => {
         console.log(error);
