@@ -21,11 +21,10 @@ export default {
           console.log("fetched");
           bus.$emit("end:spinner");
         })
-        .catch((erorr) => {
-          console.log(erorr);
+        .catch((error) => {
+          console.log(error);
         });
     }, 3000);
-    bus.$emit("end:spinner");
   },
 };
 </script>
